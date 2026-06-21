@@ -35,14 +35,7 @@
       }
     },
     // ==================== 海外 AI 厂商核心数据源 ====================
-    {
-      "type": "text",
-      "action": "add",
-      "args": {
-        "name": "openai",
-        "uri": "https://openai.com/v1/ip-blocks.txt"
-      }
-    },
+    // ❌ 已移除 OpenAI text 源：openai.com/v1/ip-blocks.txt 持续返回 403，已完全改用 ASN 源 AS395333
     {
       "type": "json",
       "action": "add",
@@ -52,16 +45,7 @@
         "jsonPath": ["interconnects.#.ipv4_prefix", "interconnects.#.ipv6_prefix"]
       }
     },
-    // ⚠️ 已移除：perplexity.ai/perplexity-user-useragents.txt 返回的是 User-Agent 字符串列表而非 IP/CIDR，
-    //    该源无法产出任何有效的 IP 归属数据。Perplexity 已改用 ASN 源 (AS400338, AS399144) 覆盖。
-    // {
-    //   "type": "text",
-    //   "action": "add",
-    //   "args": {
-    //     "name": "perplexity",
-    //     "uri": "https://www.perplexity.ai/perplexity-user-useragents.txt"
-    //   }
-    // },
+    // ⚠️ 已移除 Perplexity text 源：perplexity-user-useragents.txt 返回 User-Agent 字符串，无法产出 IP 数据，已改用 ASN
     // ==================== 谷歌官方业务解耦拆分 (含 Google Cloud CDN) ====================
     {
       "type": "json",
