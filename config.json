@@ -52,14 +52,16 @@
         "jsonPath": ["interconnects.#.ipv4_prefix", "interconnects.#.ipv6_prefix"]
       }
     },
-    {
-      "type": "text",
-      "action": "add",
-      "args": {
-        "name": "perplexity",
-        "uri": "https://www.perplexity.ai/perplexity-user-useragents.txt"
-      }
-    },
+    // ⚠️ 已移除：perplexity.ai/perplexity-user-useragents.txt 返回的是 User-Agent 字符串列表而非 IP/CIDR，
+    //    该源无法产出任何有效的 IP 归属数据。Perplexity 已改用 ASN 源 (AS400338, AS399144) 覆盖。
+    // {
+    //   "type": "text",
+    //   "action": "add",
+    //   "args": {
+    //     "name": "perplexity",
+    //     "uri": "https://www.perplexity.ai/perplexity-user-useragents.txt"
+    //   }
+    // },
     // ==================== 谷歌官方业务解耦拆分 (含 Google Cloud CDN) ====================
     {
       "type": "json",
@@ -150,9 +152,11 @@
           "telegram": ["AS62041", "AS62014", "AS59930", "AS44907", "AS211157"],
           "twitter": ["AS63179", "AS54888", "AS35995", "AS13414"],
           "xai": ["AS39121", "AS40122"],
+          "openai": ["AS395333"],
           "midjourney": ["AS399534"],
           "runway": ["AS397034"],
           "huggingface": ["AS399491", "AS27375"],
+          "perplexity": ["AS400338", "AS399144"],
           "youtube": ["AS43515", "AS36040", "AS36039", "AS19448", "AS19425"],
           "gemini": ["AS396982", "AS396178", "AS395973", "AS394639", "AS394507", "AS394089", "AS214611", "AS214609"],
           "google": ["AS15169", "AS6432", "AS55023", "AS45566", "AS41264", "AS40873", "AS36987", "AS36561", "AS36520", "AS36492", "AS36411", "AS36385", "AS36384", "AS36383", "AS33715", "AS32381", "AS26910", "AS26684", "AS22859", "AS22577", "AS209539", "AS209519", "AS209504", "AS19527", "AS16591", "AS16550", "AS151231", "AS13949", "AS139190", "AS139070"],
